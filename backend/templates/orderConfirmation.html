@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Order Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #2e7d32;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .order-info {
+            background-color: #f5f5f5;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .product {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .product:last-child {
+            border-bottom: none;
+        }
+        .totals {
+            margin-top: 20px;
+            text-align: right;
+        }
+        .customer-info {
+            background-color: #f5f5f5;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Order Confirmation</h1>
+        <p>Thank you for your order!</p>
+    </div>
+
+    <div class="order-info">
+        <h2>Order Details</h2>
+        <p><strong>Order Number:</strong> {{orderNumber}}</p>
+        <p><strong>Order Date:</strong> {{orderDate}}</p>
+    </div>
+
+    <h2>Products Ordered</h2>
+    {{#each orderDetails.items}}
+    <div class="product">
+        <h3>{{product.title}}</h3>
+        <p>{{product.description}}</p>
+        <p><strong>Color:</strong> {{selectedColor}}</p>
+        <p><strong>Size:</strong> {{selectedSize}}</p>
+        <p><strong>Quantity:</strong> {{quantity}}</p>
+        <p><strong>Price:</strong> Rs. {{product.price}}</p>
+    </div>
+    {{/each}}
+
+    <div class="totals">
+        <p><strong>Subtotal:</strong> Rs. {{orderDetails.subtotal}}</p>
+        <p><strong>Shipping:</strong> {{#if orderDetails.shipping}}Rs. {{orderDetails.shipping}}{{else}}Free{{/if}}</p>
+        <p><strong>Total:</strong> Rs. {{orderDetails.total}}</p>
+    </div>
+
+    <div class="customer-info">
+        <h2>Shipping Information</h2>
+        <p><strong>Name:</strong> {{customerInfo.fullName}}</p>
+        <p><strong>Email:</strong> {{customerInfo.email}}</p>
+        <p><strong>Phone:</strong> {{customerInfo.phone}}</p>
+        <p><strong>Address:</strong> {{customerInfo.address}}</p>
+        <p><strong>City:</strong> {{customerInfo.city}}</p>
+        <p><strong>State:</strong> {{customerInfo.state}}</p>
+        <p><strong>ZIP Code:</strong> {{customerInfo.zipCode}}</p>
+    </div>
+
+    <div class="next-steps">
+        <h2>What's Next?</h2>
+        <ul>
+            <li>Your order will be processed and shipped within 24 hours</li>
+            <li>You will receive shipping updates at this email address</li>
+            <li>Expected delivery: 3-5 business days</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <p>If you have any questions, please contact our support team at support@example.com</p>
+        <p>Thank you for shopping with us!</p>
+    </div>
+</body>
+</html> 
