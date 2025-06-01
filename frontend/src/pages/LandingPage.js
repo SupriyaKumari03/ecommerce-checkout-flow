@@ -118,9 +118,7 @@ const LandingPage = () => {
                 {products && products.map(product => (
                     <div key={product.id} className="product-card">
                         <div className="product-image-container">
-                            <div className="product-image">
-                                <img src={product.image} alt={product.title} />
-                            </div>
+                            <img src={product.image} alt={product.title} />
                         </div>
                         <div className="product-info">
                             <h3 className="product-title">{product.title}</h3>
@@ -195,4 +193,4 @@ const LandingPage = () => {
     );
 };
 
-export default LandingPage; 
+export default LandingPage;

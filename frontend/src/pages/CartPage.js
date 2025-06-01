@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 import '../styles/CartPage.css';
 
 const CartPage = () => {
     const { cartItems, removeFromCart, updateQuantity } = useCart();
+    const { isAuthenticated } = useAuth();
     const navigate = useNavigate();
 
     const calculateSubtotal = () => {
@@ -18,6 +20,11 @@ const CartPage = () => {
     };
 
     const handleCheckout = () => {
+        if (!isAuthenticated) {
+            navigate('/signin', { state: { from: '/cart' } });
+            return;
+        }
+
         if (cartItems.length > 0) {
             navigate('/checkout', {
                 state: {
@@ -35,11 +42,24 @@ const CartPage = () => {
                 <Link to="/" className="continue-shopping">
                     Continue shopping
                 </Link>
-                <div className="account-prompt">
-                    <h2>Have an account?</h2>
-                    <Link to="/login" className="login-link">Log in</Link>
-                    <span> to check out faster.</span>
-                </div>
+                {!isAuthenticated && (
+                    <div className="empty-cart-auth">
+                        <div className="account-prompt">
+                            <i className="fas fa-user-circle"></i>
+                            <div className="prompt-content">
+                                <h2>Have an account?</h2>
+                                <p>
+                                    <Link to="/signin" className="login-link">Sign in</Link>
+                                    <span> to check out faster and view your order history.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div className="auth-buttons">
+                            <Link to="/signin" className="auth-button signin">Sign in</Link>
+                            <Link to="/signup" className="auth-button signup">Create Account</Link>
+                        </div>
+                    </div>
+                )}
                 <div className="payment-methods">
                     <div className="payment-icons">
                         <img src="/images/payment/visa.svg" alt="Visa" />
@@ -56,6 +76,14 @@ const CartPage = () => {
 
     return (
         <div className="cart-page">
+            {!isAuthenticated && (
+                <div className="cart-auth-banner">
+                    <div className="auth-message">
+                        <i className="fas fa-user-circle"></i>
+                        <span>Have an account? <Link to="/signin" state={{ from: '/cart' }}>Sign in</Link> for a faster checkout experience</span>
+                    </div>
+                </div>
+            )}
             <h1>Shopping Cart</h1>
             <div className="cart-container">
                 <div className="cart-items">
@@ -110,12 +138,17 @@ const CartPage = () => {
                             <span>Rs. {calculateSubtotal().toFixed(2)}</span>
                         </div>
                     </div>
+                    {!isAuthenticated && (
+                        <div className="auth-prompt">
+                            <p>Please <Link to="/signin" state={{ from: '/cart' }}>sign in</Link> to proceed with checkout</p>
+                        </div>
+                    )}
                     <button
                         className="checkout-button"
                         onClick={handleCheckout}
                         disabled={cartItems.length === 0}
                     >
-                        Proceed to Checkout
+                        {isAuthenticated ? 'Proceed to Checkout' : 'Sign in to Checkout'}
                     </button>
                 </div>
             </div>

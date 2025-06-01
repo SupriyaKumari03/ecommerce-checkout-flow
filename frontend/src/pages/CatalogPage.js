@@ -118,9 +118,7 @@ const CatalogPage = () => {
                 {products.map(product => (
                     <div key={product.id} className="product-card">
                         <div className="product-image-container">
-                            <div className="product-image">
-                                <img src={product.image} alt={product.title} />
-                            </div>
+                            <img src={product.image} alt={product.title} />
                         </div>
                         <div className="product-info">
                             <h3>{product.title}</h3>
@@ -203,4 +201,4 @@ const CatalogPage = () => {
     );
 };
 
-export default CatalogPage; 
+export default CatalogPage;

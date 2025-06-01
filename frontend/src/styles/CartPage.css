@@ -330,3 +330,118 @@
         height: 20px;
     }
 }
+
+.cart-auth-banner {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.auth-message {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #495057;
+    font-size: 1rem;
+}
+
+.auth-message i {
+    font-size: 1.5rem;
+    color: #6c757d;
+}
+
+.auth-message a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    margin: 0 0.25rem;
+}
+
+.auth-message a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+/* Empty Cart Auth Styles */
+.empty-cart-auth {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 480px;
+    text-align: left;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.empty-cart-auth .account-prompt {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.empty-cart-auth .account-prompt i {
+    font-size: 2rem;
+    color: #6c757d;
+    margin-top: 0.25rem;
+}
+
+.empty-cart-auth .prompt-content {
+    flex: 1;
+}
+
+.empty-cart-auth .prompt-content h2 {
+    font-size: 1.25rem;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    display: block;
+}
+
+.empty-cart-auth .prompt-content p {
+    color: #4b5563;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.empty-cart-auth .auth-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.empty-cart-auth .auth-button {
+    flex: 1;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.empty-cart-auth .auth-button.signin {
+    background-color: #007bff;
+    color: white;
+}
+
+.empty-cart-auth .auth-button.signin:hover {
+    background-color: #0056b3;
+}
+
+.empty-cart-auth .auth-button.signup {
+    background-color: white;
+    color: #007bff;
+    border: 1px solid #007bff;
+}
+
+.empty-cart-auth .auth-button.signup:hover {
+    background-color: #f8f9fa;
+}
