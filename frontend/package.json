@@ -39,5 +39,7 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "homepage": "https://ecommerce-checkout-flow-frontend.onrender.com",
+  "proxy": "https://ecommerce-checkout-flow-backend.onrender.com"
 }
